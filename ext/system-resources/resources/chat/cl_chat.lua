@@ -163,7 +163,8 @@ RegisterRawNuiCallback('chatResult', function(requestData, cb)
 end)
 
 local function refreshCommands()
-  if GetRegisteredCommands then
+  -- use `setr sysresource_chat_autoCommandSuggestions false` on the server to stop command suggestions from automatically being registered, `setr` will also disallow clients to change it
+  if GetConvar('sysresource_chat_autoCommandSuggestions', 'true') == 'true' then
     local registeredCommands = GetRegisteredCommands()
 
     local suggestions = {}
